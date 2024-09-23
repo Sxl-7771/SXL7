@@ -1,10 +1,10 @@
 class Product:
-    def __init__(self, name: str, weight: float, category: str):
+    def __init__(self, name, weight, category):
         self.name = name
         self.weight = weight
         self.category = category
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f'{self.name}, {self.weight}, {self.category}'
 
 
@@ -12,28 +12,27 @@ class Shop:
     def __init__(self):
         self.__file_name = 'products.txt'
 
-    def get_products(self) -> str:
+    def get_products(self):
         try:
-            with open(self.__file_name, 'r', encoding='utf-8') as file:
-                return file.read().strip()
+            with open(self.__file_name, 'r') as file:
+                return file.read()
         except FileNotFoundError:
             return ""
 
-    def add(self, *products: Product):
-        current_names = set(
-            line.split(', ')[0] for line in self.get_products().splitlines()
-        )
+    def add(self, *products):
+        existing_products = self.get_products().splitlines()
+        added_product_names = [line.split(', ')[0] for line in existing_products]
 
-        with open(self.__file_name, 'a', encoding='utf-8') as file:
+        with open(self.__file_name, 'a') as file:
             for product in products:
-                if product.name in current_names:
-                    print(f'Продукт {product.name} уже есть в магазине')
+                if product.name not in added_product_names:
+                    file.write(str(product) + '\n')
+                    added_product_names.append(product.name)
                 else:
-                    file.write(f'{product}\n')
-                    current_names.add(product.name)
-
+                    print(f'Продукт {product.name} уже есть в магазине')
 
 s1 = Shop()
+
 p1 = Product('Potato', 50.5, 'Vegetables')
 p2 = Product('Spaghetti', 3.4, 'Groceries')
 p3 = Product('Potato', 5.5, 'Vegetables')
