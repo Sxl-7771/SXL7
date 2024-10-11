@@ -6,7 +6,7 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
 from aiogram.utils import executor
 
-api = '7704935612:AAE0gOAsKrLrjOkwBc571ZRVKAZjVeN-5UE'
+api = ''
 
 logging.basicConfig(level=logging.INFO)
 
