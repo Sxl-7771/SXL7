@@ -5,9 +5,9 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
 from aiogram.utils import executor
-from crud_functions import initiate_db, get_all_products  # Импортируем функции для работы с базой
+from crud_functions import initiate_db, get_all_products
 
-api = '7704935612:AAE0gOAsKrLrjOkwBc571ZRVKAZjVeN-5UE'
+api = ''
 
 logging.basicConfig(level=logging.INFO)
 
@@ -15,7 +15,6 @@ bot = Bot(token=api)
 storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
 
-# Инициализация базы данных при запуске бота
 initiate_db()
 
 
@@ -103,7 +102,7 @@ async def send_calories(message: types.Message, state: FSMContext):
 
 @dp.message_handler(lambda message: message.text.lower() == 'купить')
 async def get_buying_list(message: types.Message):
-    products = get_all_products()  # Получение продуктов из базы данных
+    products = get_all_products()
 
     if not products:
         await message.answer("Нет доступных продуктов.")
@@ -111,7 +110,6 @@ async def get_buying_list(message: types.Message):
 
     for product in products:
         product_id, title, description, price = product
-        # Допустим, у нас есть картинки для каждого продукта, названные по порядку
         with open(f'Photo/{product_id}.jpg', "rb") as img:
             await message.answer_photo(img, f"Название: {title} | Описание: {description} | Цена: {price} руб.")
 
