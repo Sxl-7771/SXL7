@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+</head>
+<body>
+    <h1>Корзина</h1>
+    <ul>
+        {% for item in cart %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('games') }}">Назад к играм</a>
+</body>
+</html>

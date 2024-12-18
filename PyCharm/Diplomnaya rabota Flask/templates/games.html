@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Игры</title>
+</head>
+<body>
+    <h1>Игры</h1>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                     {{ message }}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    <h2>Шутеры</h2>
+    {% for game in shooter %}
+        <div>
+            <h3>{{ game.title }}</h3>
+            <img src="{{ game.image }}" alt="{{ game.title }}">
+            <p>{{ game.description }}</p>
+            <a href="{{ url_for('add_to_cart', game_title=game.title) }}">Добавить в корзину</a>
+        </div>
+    {% endfor %}
+    <h2>Гонки</h2>
+    {% for game in racing %}
+        <div>
+            <h3>{{ game.title }}</h3>
+            <img src="{{ game.image }}" alt="{{ game.title }}">
+            <p>{{ game.description }}</p>
+            <a href="{{ url_for('add_to_cart', game_title=game.title) }}">Добавить в корзину</a>
+        </div>
+    {% endfor %}
+    <h2>Стратегии</h2>
+    {% for game in strategy %}
+        <div>
+            <h3>{{ game.title }}</h3>
+            <img src="{{ game.image }}" alt="{{ game.title }}">
+            <p>{{ game.description }}</p>
+            <a href="{{ url_for('add_to_cart', game_title=game.title) }}">Добавить в корзину</a>
+        </div>
+    {% endfor %}
+    <a href="{{ url_for('view_cart') }}">Перейти в корзину</a>
+</body>
+</html>

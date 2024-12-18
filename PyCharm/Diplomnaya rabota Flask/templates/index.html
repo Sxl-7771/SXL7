@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+</head>
+<body>
+    <h1>Добро пожаловать в интернет-магазин игр!</h1>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                     {{ message }}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    <a href="{{ url_for('register') }}">Регистрация</a>
+    <a href="{{ url_for('games') }}">Игры</a>
+    <a href="{{ url_for('view_cart') }}">Корзина</a>
+</body>
+</html>
