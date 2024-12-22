@@ -1,20 +1,117 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
 }
 
-h1 {
+h1, h2, h3 {
     color: #333;
 }
 
-ul {
-    list-style-type: none;
+a {
+    text-decoration: none;
+    color: #007bff;
 }
 
-li {
-    margin: 20px 0;
+a:hover {
+    text-decoration: underline;
 }
 
-img {
-    width: 100px;
-    height: auto;
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+} 
+
+.links {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.styled-link {
+    border-radius: 10px;
+    background-color: #007BFF;
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.styled-link:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-container label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #999;
+    transition: 0.2s;
+    pointer-events: none;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-container input:focus {
+    border-color: #007BFF;
+}
+
+.input-container input:focus + label,
+.input-container input:not(:placeholder-shown) + label {
+    top: -20px;
+    left: 10px;
+    font-size: 12px;
+    color: #007BFF;
+    background: white;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.input-container input::placeholder {
+    color: transparent;
+}
+
+form {
+    width: 400px;
+    margin: auto;
+}
+
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+
+    div {
+        img {
+            width: 200px;
+            height: 300px;
+            overflow: hidden;
+        }
+    }
+}
+
+h1, h2 {
+    text-align: center;
+    margin-top: 100px;
 }
