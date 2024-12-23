@@ -103,10 +103,30 @@ form {
     gap: 10px;
 
     div {
+        text-align: center;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 250px;
+        
         img {
             width: 200px;
             height: 300px;
             overflow: hidden;
+        }
+
+        p {
+            width: 200px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+            text-align: left;
+            overflow: hidden;
+            max-height: 200px;
         }
     }
 }
@@ -114,4 +134,13 @@ form {
 h1, h2 {
     text-align: center;
     margin-top: 100px;
+}
+
+.description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
